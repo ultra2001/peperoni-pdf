@@ -1,104 +1,224 @@
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Peperoni Verde — Speisekarte</title>
-<style>
-:root{--accent:#c33;--muted:#666;--bg:#faf8f5;--card:#fff}
-*{box-sizing:border-box}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:var(--bg);color:#111}
-header{background:linear-gradient(90deg, rgba(195,51,51,0.12), rgba(0,0,0,0.02));padding:28px 18px;border-bottom:1px solid #eee}
-.container{max-width:1100px;margin:0 auto;padding:20px}
-.brand{display:flex;gap:16px;align-items:center}
-.logo{width:72px;height:72px;border-radius:12px;background:repeating-linear-gradient(45deg, #c33 0 6px, #fff 6px 12px);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
-h1{margin:0;font-size:24px}
-.meta{color:var(--muted);font-size:14px}
-.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-.search{flex:1;min-width:180px}
-input.search-input{width:100%;padding:10px 12px;border:1px solid #e6e6e6;border-radius:10px;font-size:15px}
-.filters{display:flex;gap:8px;align-items:center}
-.btn{background:var(--accent);color:white;padding:10px 12px;border-radius:10px;border:none;cursor:pointer}
-main{padding:24px 0}
-.grid{display:grid;grid-template-columns:1fr 320px;gap:24px}
-@media (max-width:900px){.grid{grid-template-columns:1fr}}
-.menu-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(18,18,18,0.04)}
-.category{margin-bottom:18px}
-.category h2{margin:0 0 8px 0;font-size:18px;color:var(--accent)}
-.item{display:flex;justify-content:space-between;padding:10px 6px;border-bottom:1px dashed #f0f0f0}
-.item:last-child{border-bottom:0}
-.item .left{max-width:66%}
-.item .title{font-weight:600}
-.item .desc{font-size:13px;color:var(--muted);margin-top:4px}
-.prices{white-space:nowrap;text-align:right;font-weight:700}
-.small{font-size:13px;color:var(--muted)}
-aside .card{background:var(--card);padding:16px;border-radius:12px;position:sticky;top:20px}
-footer{padding:28px 0;color:var(--muted);font-size:14px}
-.note{font-size:13px;color:var(--muted);line-height:1.45}
-.map-link{display:inline-block;margin-top:8px;color:var(--accent);text-decoration:none}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peperoni Verde — Speisekarte</title>
+  <style>
+    :root{--accent:#c33;--muted:#666;--bg:#faf8f5;--card:#fff}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:var(--bg);color:#111}
+    header{background:linear-gradient(90deg, rgba(195,51,51,0.12), rgba(0,0,0,0.02));padding:28px 18px;border-bottom:1px solid #eee}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .brand{display:flex;gap:16px;align-items:center}
+    .logo{width:72px;height:72px;border-radius:12px;background:repeating-linear-gradient(45deg, #c33 0 6px, #fff 6px 12px);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+    h1{margin:0;font-size:24px}
+    .meta{color:var(--muted);font-size:14px}
+    .toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .search{flex:1;min-width:180px}
+    input.search-input{width:100%;padding:10px 12px;border:1px solid #e6e6e6;border-radius:10px;font-size:15px}
+    .filters{display:flex;gap:8px;align-items:center}
+    .btn{background:var(--accent);color:white;padding:10px 12px;border-radius:10px;border:none;cursor:pointer}
+    main{padding:24px 0}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:24px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .menu-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(18,18,18,0.04)}
+    .category{margin-bottom:18px}
+    .category h2{margin:0 0 8px 0;font-size:18px;color:var(--accent)}
+    .item{display:flex;justify-content:space-between;padding:10px 6px;border-bottom:1px dashed #f0f0f0}
+    .item:last-child{border-bottom:0}
+    .item .left{max-width:66%}
+    .item .title{font-weight:600}
+    .item .desc{font-size:13px;color:var(--muted);margin-top:4px}
+    .prices{white-space:nowrap;text-align:right;font-weight:700}
+    .small{font-size:13px;color:var(--muted)}
+    aside .card{background:var(--card);padding:16px;border-radius:12px;position:sticky;top:20px}
+    footer{padding:28px 0;color:var(--muted);font-size:14px}
+    .note{font-size:13px;color:var(--muted);line-height:1.45}
+    .map-link{display:inline-block;margin-top:8px;color:var(--accent);text-decoration:none}
+  </style>
 </head>
 <body>
-<header>
-<div class="container">
-<div class="brand">
-<div class="logo">PV</div>
-<div>
-<h1>Peperoni Verde — Speisekarte</h1>
-<div class="meta">Heidelberger Str. 45, 64342 Seeheim-Jugenheim · Mobil: 0175 2314111</div>
-</div>
-</div>
-<div class="toolbar">
-<div class="search" role="search">
-<input id="q" class="search-input" placeholder="Gericht oder Zutat suchen (z. B. Salami, Pasta)" />
-</div>
-<div class="filters">
-<button id="reset" class="btn">Alle anzeigen</button>
-</div>
-</div>
-</div>
-</header>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">PV</div>
+        <div>
+          <h1>Peperoni Verde — Speisekarte</h1>
+          <div class="meta">Heidelberger Str. 45, 64342 Seeheim-Jugenheim · Mobil: 0175 2314111</div>
+        </div>
+      </div>
+      <div class="toolbar">
+        <div class="search" role="search">
+          <input id="q" class="search-input" placeholder="Gericht oder Zutat suchen (z. B. Salami, Pasta)" />
+        </div>
+        <div class="filters">
+          <button id="reset" class="btn">Alle anzeigen</button>
+        </div>
+      </div>
+    </div>
+  </header>
 
+  <main class="container">
+    <div class="grid">
+      <section>
+        <div class="menu-card">
+          <!-- PIZZA -->
+          <div class="category" data-cat="pizza">
+            <h2>Pizzen</h2>
+            <div class="item" data-search="margherita tomaten käse">
+              <div class="left"><div class="title">Margherita</div><div class="desc">Tomaten, Käse</div></div>
+              <div class="prices">9,90 € / 11,90 € / 26,90 €</div>
+            </div>
+            <div class="item" data-search="prosciutto schinken">
+              <div class="left"><div class="title">Prosciutto</div><div class="desc">Schinken</div></div>
+              <div class="prices">10,50 € / 12,50 € / 28,50 €</div>
+            </div>
+            <div class="item" data-search="funghi champignons">
+              <div class="left"><div class="title">Funghi / Prosciutto Funghi</div><div class="desc">frische Champignons</div></div>
+              <div class="prices">10,50 € / 12,50 € / 28,90 €</div>
+            </div>
+            <div class="item" data-search="parma prosciutto rucola parmesan mozzarella">
+              <div class="left"><div class="title">Parma</div><div class="desc">ParmaSchinken, Mozzarella, Parmesan, Rucola</div></div>
+              <div class="prices">11,50 € / 12,90 €</div>
+            </div>
+            <div class="item" data-search="tonno thunfisch zwiebeln">
+              <div class="left"><div class="title">Tonno / Tonno Spezial</div><div class="desc">Thunfisch, Zwiebeln (Spezial: Shrimps & Knoblauch)</div></div>
+              <div class="prices">10,90 € / 12,50 € / 28,90 €</div>
+            </div>
+            <div class="item" data-search="diavolo scharf salami peperoni">
+              <div class="left"><div class="title">Diavolo</div><div class="desc">scharf, Salami, Peperoni</div></div>
+              <div class="prices">10,50 € / 12,50 € / 28,50 €</div>
+            </div>
+            <div class="item" data-search="frutti mare meeresfruechte knoblauch">
+              <div class="left"><div class="title">Frutti di Mare</div><div class="desc">Meeresfrüchte, Knoblauch</div></div>
+              <div class="prices">10,50 € / 12,50 € / 28,90 €</div>
+            </div>
+            <div class="small note">Hinweis: Viele Pizzen sind in mehreren Größen verfügbar (Normal, Groß, Family/Party). Zusätzliche Beläge gegen Aufpreis.</div>
+          </div>
 
-<main class="container">
-<div class="grid">
-<section>
-<div class="menu-card">
-<!-- PIZZA -->
-<div class="category" data-cat="pizza">
-<h2>Pizzen</h2>
-<div class="item" data-search="margherita tomaten käse">
-<div class="left"><div class="title">Margherita</div><div class="desc">Tomaten, Käse</div></div>
-<div class="prices">9,90 € / 11,90 € / 26,90 €</div>
-</div>
-<div class="item" data-search="prosciutto schinken">
-<div class="left"><div class="title">Prosciutto</div><div class="desc">Schinken</div></div>
-<div class="prices">10,50 € / 12,50 € / 28,50 €</div>
-</div>
-<div class="item" data-search="funghi champignons">
-<div class="left"><div class="title">Funghi / Prosciutto Funghi</div><div class="desc">frische Champignons</div></div>
-<div class="prices">10,50 € / 12,50 € / 28,90 €</div>
-</div>
-<div class="item" data-search="parma prosciutto rucola parmesan mozzarella">
-<div class="left"><div class="title">Parma</div><div class="desc">ParmaSchinken, Mozzarella, Parmesan, Rucola</div></div>
-<div class="prices">11,50 € / 12,90 €</div>
-</div>
-<div class="item" data-search="tonno thunfisch zwiebeln">
-<div class="left"><div class="title">Tonno / Tonno Spezial</div><div class="desc">Thunfisch, Zwiebeln (Spezial: Shrimps & Knoblauch)</div></div>
-<div class="prices">10,90 € / 12,50 € / 28,90 €</div>
-</div>
-<div class="item" data-search="diavolo scharf salami peperoni">
-<div class="left"><div class="title">Diavolo</div><div class="desc">scharf, Salami, Peperoni</div></div>
-<div class="prices">10,50 € / 12,50 € / 28,50 €</div>
-</div>
-<div class="item" data-search="frutti mare meeresfruechte knoblauch">
-<div class="left"><div class="title">Frutti di Mare</div><div class="desc">Meeresfrüchte, Knoblauch</div></div>
-<div class="prices">10,50 € / 12,50 € / 28,90 €</div>
-</div>
-<div class="small note">Hinweis: Viele Pizzen sind in mehreren Größen verfügbar (Normal, Groß, Family/Party). Zusätzliche Beläge gegen Aufpreis.</div>
-</div>
+          <!-- PASTA -->
+          <div class="category" data-cat="pasta">
+            <h2>Pasta & Überbackene Nudelgerichte</h2>
+            <div class="item" data-search="pasta alla carbonara">
+              <div class="left"><div class="title">Carbonara</div><div class="desc">Spaghetti oder Rigatoni mit Speckwürfeln, Ei in Sahnesoße</div></div>
+              <div class="prices">10,50 €</div>
+            </div>
+            <div class="item" data-search="pasta bolognese">
+              <div class="left"><div class="title">Bolognese</div><div class="desc">hausgemachte Bolognese-Soße</div></div>
+              <div class="prices">10,90 €</div>
+            </div>
+            <div class="item" data-search="tortellini gorgonzola">
+              <div class="left"><div class="title">Tortellini alla Gorgonzola</div><div class="desc">Tortellini in Gorgonzola-Sahne-Soße</div></div>
+              <div class="prices">10,90 €</div>
+            </div>
+            <div class="item" data-search="al salmone lachs">
+              <div class="left"><div class="title">Al Salmone</div><div class="desc">mit geräuchertem Lachs und Dill</div></div>
+              <div class="prices">11,90 €</div>
+            </div>
+          </div>
 
+          <!-- SALATE -->
+          <div class="category" data-cat="salate">
+            <h2>Salate</h2>
+            <div class="item" data-search="insalata pomodoro tomatensalat">
+              <div class="left"><div class="title">Insalata Pomodoro / Tomatensalat</div><div class="desc">Frische Tomaten, Basilikum, Olivenöl</div></div>
+              <div class="prices">8,00 €</div>
+            </div>
+            <div class="item" data-search="insalata caprese mozzarella basilikum">
+              <div class="left"><div class="title">Insalata Caprese</div><div class="desc">Tomaten, Mozzarella, frisches Basilikum</div></div>
+              <div class="prices">9,90 €</div>
+            </div>
+            <div class="item" data-search="caesar salat">
+              <div class="left"><div class="title">Caesar Salat</div><div class="desc">Römersalat, Croutons, Parmesan, gegrillte Hähnchenstreifen</div></div>
+              <div class="prices">12,50 €</div>
+            </div>
+          </div>
 
-<!-- PASTA -->
-<div class="category" data-cat="pasta">
-<h2>Pasta & Überbackene Nudelgerichte</h2>
-<div class="item" data-search="pasta alla carbonara">
+          <!-- SANDWICHES / ROLLOS -->
+          <div class="category" data-cat="rollos">
+            <h2>Rollos Spezialitäten</h2>
+            <div class="item" data-search="rollo sunny salami schinken ananas">
+              <div class="left"><div class="title">Rollo Sunny</div><div class="desc">Salami, Schinken, Ananas, fr. Champignons, Mais, Spinat, Tomaten, Joghurtsoße</div></div>
+              <div class="prices">11,90 €</div>
+            </div>
+            <div class="item" data-search="rollo tonno thunfisch">
+              <div class="left"><div class="title">Rollo Tonno</div><div class="desc">Thunfisch, frische Champignons, Zwiebeln, Knoblauchsoße</div></div>
+              <div class="prices">11,90 €</div>
+            </div>
+          </div>
+
+          <!-- FLEISCH & SNACKS -->
+          <div class="category" data-cat="fleisch">
+            <h2>Schnitzel, Steaks & Kleiner Hunger</h2>
+            <div class="item" data-search="schnitzel wiener art pommes salat">
+              <div class="left"><div class="title">Schnitzel „Wiener Art”</div><div class="desc">Mit Pommes oder Kroketten und Salat</div></div>
+              <div class="prices">13,50 €</div>
+            </div>
+            <div class="item" data-search="chicken wings nuggets">
+              <div class="left"><div class="title">Chicken Wings / Nuggets (10 St.)</div><div class="desc">Portion</div></div>
+              <div class="prices">11,90 € / 9,00 €</div>
+            </div>
+            <div class="item" data-search="pommes portion">
+              <div class="left"><div class="title">Portion Pommes frites</div><div class="desc"></div></div>
+              <div class="prices">5,00 €</div>
+            </div>
+          </div>
+
+          <!-- DESSERTS & GETRÄNKE -->
+          <div class="category" data-cat="drinks">
+            <h2>Desserts & Getränke</h2>
+            <div class="item" data-search="tiramisu">
+              <div class="left"><div class="title">Tiramisu</div><div class="desc"></div></div>
+              <div class="prices">6,50 €</div>
+            </div>
+            <div class="item" data-search="spaghetti eis">
+              <div class="left"><div class="title">Spaghetti Eis</div><div class="desc"></div></div>
+              <div class="prices">4,00 €</div>
+            </div>
+            <div class="item" data-search="alkoholfreie getraenke 1l">
+              <div class="left"><div class="title">Alkoholfreie Getränke (1 L)</div><div class="desc">Coca Cola, Fanta, Mezzo Mix, Sprite, Orangensaft, Apfelsaft</div></div>
+              <div class="prices">3,80 € + Pfand</div>
+            </div>
+            <div class="small note">Alle Preise in Euro inkl. MwSt. Irrtümer & Preisänderungen vorbehalten.</div>
+          </div>
+
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <h3>Info</h3>
+          <p class="small">Öffnungszeiten: Montag Ruhetag · Di–So 10:30–14:00 &amp; 17:00–22:20</p>
+          <p class="small">Lieferservice: Kostenlose Lieferung nach Seeheim. Fahrtkosten je nach Ort (z. B. +1,00 € Jugenheim).</p>
+          <p class="small">Adresse: Heidelberger Str. 45, 64342 Seeheim-Jugenheim</p>
+          <a class="map-link" href="https://www.google.com/maps/place/Heidelberger+Str.+45+64342+Seeheim-Jugenheim" target="_blank">Öffnen in Google Maps</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="container">
+    <div class="menu-card">
+      <div class="note">Legende: Zahlen/Kürzel in der Speisekarte kennzeichnen Zusatzstoffe und Allergene. Für die verbindliche Kennzeichnung ist der Bringdienst verantwortlich.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple client-side search
+    const q = document.getElementById('q');
+    const reset = document.getElementById('reset');
+    const items = Array.from(document.querySelectorAll('.item'));
+    function doSearch(){
+      const val = q.value.trim().toLowerCase();
+      if(!val){items.forEach(i=>i.style.display='flex');return}
+      items.forEach(it=>{
+        const text = (it.getAttribute('data-search')||'') + ' ' + (it.querySelector('.title')?.textContent||'') + ' ' + (it.querySelector('.desc')?.textContent||'');
+        it.style.display = text.toLowerCase().includes(val) ? 'flex' : 'none';
+      })
+    }
+    q.addEventListener('input', doSearch);
+    reset.addEventListener('click', ()=>{q.value='';doSearch();});
+  </script>
+</body>
+</html>
