@@ -1,22 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>PDF Viewer</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Peperoni Verde — Speisekarte</title>
+<style>
+:root{--accent:#c33;--muted:#666;--bg:#faf8f5;--card:#fff}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:var(--bg);color:#111}
+header{background:linear-gradient(90deg, rgba(195,51,51,0.12), rgba(0,0,0,0.02));padding:28px 18px;border-bottom:1px solid #eee}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.brand{display:flex;gap:16px;align-items:center}
+.logo{width:72px;height:72px;border-radius:12px;background:repeating-linear-gradient(45deg, #c33 0 6px, #fff 6px 12px);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+h1{margin:0;font-size:24px}
+.meta{color:var(--muted);font-size:14px}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.search{flex:1;min-width:180px}
+input.search-input{width:100%;padding:10px 12px;border:1px solid #e6e6e6;border-radius:10px;font-size:15px}
+.filters{display:flex;gap:8px;align-items:center}
+.btn{background:var(--accent);color:white;padding:10px 12px;border-radius:10px;border:none;cursor:pointer}
+main{padding:24px 0}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:24px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.menu-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(18,18,18,0.04)}
+.category{margin-bottom:18px}
+.category h2{margin:0 0 8px 0;font-size:18px;color:var(--accent)}
+.item{display:flex;justify-content:space-between;padding:10px 6px;border-bottom:1px dashed #f0f0f0}
+.item:last-child{border-bottom:0}
+.item .left{max-width:66%}
+.item .title{font-weight:600}
+.item .desc{font-size:13px;color:var(--muted);margin-top:4px}
+.prices{white-space:nowrap;text-align:right;font-weight:700}
+.small{font-size:13px;color:var(--muted)}
+aside .card{background:var(--card);padding:16px;border-radius:12px;position:sticky;top:20px}
+footer{padding:28px 0;color:var(--muted);font-size:14px}
+.note{font-size:13px;color:var(--muted);line-height:1.45}
+.map-link{display:inline-block;margin-top:8px;color:var(--accent);text-decoration:none}
+</style>
 </head>
-<body oncontextmenu="return false">
-  <iframe src="pizza new card.pdf"></iframe>
-</body>
-</html>
+<body>
+<header>
+<div class="container">
+<div class="brand">
+<div class="logo">PV</div>
+<div>
+<h1>Peperoni Verde — Speisekarte</h1>
+<div class="meta">Heidelberger Str. 45, 64342 Seeheim-Jugenheim · Mobil: 0175 2314111</div>
+</div>
+</div>
+<div class="toolbar">
+<div class="search" role="search">
+<input id="q" class="search-input" placeholder="Gericht oder Zutat suchen (z. B. Salami, Pasta)" />
+</div>
+<div class="filters">
+<button id="reset" class="btn">Alle anzeigen</button>
+</div>
+</div>
+</div>
+</header>
+
+
+<main class="container">
+<div class="grid">
+<section>
+<div class="menu-card">
+<!-- PIZZA -->
+<div class="category" data-cat="pizza">
+<h2>Pizzen</h2>
+<div class="item" data-search="margherita tomaten käse">
+<div class="left"><div class="title">Margherita</div><div class="desc">Tomaten, Käse</div></div>
+<div class="prices">9,90 € / 11,90 € / 26,90 €</div>
+</div>
+<div class="item" data-search="prosciutto schinken">
+<div class="left"><div class="title">Prosciutto</div><div class="desc">Schinken</div></div>
+<div class="prices">10,50 € / 12,50 € / 28,50 €</div>
+</div>
+<div class="item" data-search="funghi champignons">
+<div class="left"><div class="title">Funghi / Prosciutto Funghi</div><div class="desc">frische Champignons</div></div>
+<div class="prices">10,50 € / 12,50 € / 28,90 €</div>
+</div>
+<div class="item" data-search="parma prosciutto rucola parmesan mozzarella">
+<div class="left"><div class="title">Parma</div><div class="desc">ParmaSchinken, Mozzarella, Parmesan, Rucola</div></div>
+<div class="prices">11,50 € / 12,90 €</div>
+</div>
+<div class="item" data-search="tonno thunfisch zwiebeln">
+<div class="left"><div class="title">Tonno / Tonno Spezial</div><div class="desc">Thunfisch, Zwiebeln (Spezial: Shrimps & Knoblauch)</div></div>
+<div class="prices">10,90 € / 12,50 € / 28,90 €</div>
+</div>
+<div class="item" data-search="diavolo scharf salami peperoni">
+<div class="left"><div class="title">Diavolo</div><div class="desc">scharf, Salami, Peperoni</div></div>
+<div class="prices">10,50 € / 12,50 € / 28,50 €</div>
+</div>
+<div class="item" data-search="frutti mare meeresfruechte knoblauch">
+<div class="left"><div class="title">Frutti di Mare</div><div class="desc">Meeresfrüchte, Knoblauch</div></div>
+<div class="prices">10,50 € / 12,50 € / 28,90 €</div>
+</div>
+<div class="small note">Hinweis: Viele Pizzen sind in mehreren Größen verfügbar (Normal, Groß, Family/Party). Zusätzliche Beläge gegen Aufpreis.</div>
+</div>
+
+
+<!-- PASTA -->
+<div class="category" data-cat="pasta">
+<h2>Pasta & Überbackene Nudelgerichte</h2>
+<div class="item" data-search="pasta alla carbonara">
